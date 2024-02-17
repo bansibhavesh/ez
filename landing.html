@@ -118,50 +118,77 @@
 					</div>
 
 				<!-- Contact -->
-				<section id="contact">
-					<div class="inner">
-						<section>
-							<form method="post" action="https://hooks.zapier.com/hooks/catch/17954565/3e22ebl/
-							">
-								<div class="fields">
-									<div class="field half">
-										<label for="Dev-name">Dev-Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field half">
-										<label for="discord">Discord Username</label>
-										<input type="text" name="username" id="username" />
-									</div>
-									<div class="field">
-										<label for="message">Brief your requirement</label>
-										<textarea name="message" id="message" rows="12"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" class="primary" /></li>
-									<li><input type="reset" value="Clear" /></li>
-								</ul>
-							
-				
-								</form>
-							</section>
-							<section class="split">
-								<section>
-									<div class="contact-method">
-										
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<iframe src="https://discord.com/widget?id=865457895356104736&theme=dark" width="350" height="400" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+<section id="contact">
+    <div class="inner">
+        <section>
+            <form id="messageForm" method="post" action="https://hooks.zapier.com/hooks/catch/17954565/3e22ebl/">
+                <div class="fields">
+                    <div class="field half">
+                        <label for="Dev-name">Dev-Name</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+                    <div class="field half">
+                        <label for="discord">Discord Username</label>
+                        <input type="text" name="username" id="username" />
+                    </div>
+                    <div class="field">
+                        <label for="message">Brief your requirement</label>
+                        <textarea name="message" id="message" rows="12"></textarea>
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Send Message" class="primary" /></li>
+                    <li><input type="reset" value="Clear" /></li>
+                </ul>
+            </form>
+        </section>
+        <section class="split">
+            <section>
+                <div class="contact-method">
+                    
+                </div>
+            </section>
+            <section>
+                <div class="contact-method">
+                    <iframe src="https://discord.com/widget?id=865457895356104736&theme=dark" width="350" height="400" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+                    </iframe>
+                </div>
+            </section>
+        </section>
+    </div>
+</section>
 
-										</iframe>
-									</div>
-								</section>
-								</section>
-							</section>
-						</div>
-					</section>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("messageForm");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // You may want to perform form validation here before proceeding
+        // For simplicity, we'll assume the form is valid
+
+        // Submit the form data asynchronously
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(response => {
+            // Redirect the user to another page after successful form submission
+            if (response.ok) {
+                window.location.href = 'https://discord.gg/V2DkGjpdRU'; // Redirect to Discord link
+            } else {
+                // Handle error cases if necessary
+                console.error('Form submission failed:', response.status);
+            }
+        })
+        .catch(error => {
+            console.error('Error submitting form:', error);
+        });
+    });
+});
+</script>
+
 			
 
 				<!-- Footer -->
